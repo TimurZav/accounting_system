@@ -16,10 +16,10 @@ class Business(Model):
 
 class FormPayment(Model):
     business = ForeignKey(Business, on_delete=SET_NULL, null=True, verbose_name="Бизнес")
-    form_payment = CharField(blank=False, verbose_name="Форма оплаты")
+    name = CharField(blank=False, verbose_name="Форма оплаты")
 
     def __str__(self):
-        return self.form_payment
+        return self.name
 
     class Meta:
         managed: bool = True
@@ -30,10 +30,10 @@ class FormPayment(Model):
 class LegalEntity(Model):
     business = ForeignKey(Business, on_delete=SET_NULL, null=True, verbose_name="Бизнес")
     form_payment = ForeignKey(FormPayment, on_delete=SET_NULL, null=True, verbose_name="Форма оплаты")
-    legal_entity: CharField = CharField(blank=False, verbose_name="Юр. лицо")
+    name: CharField = CharField(blank=False, verbose_name="Юр. лицо")
 
     def __str__(self):
-        return self.legal_entity
+        return self.name
 
     class Meta:
         managed: bool = True
@@ -45,10 +45,10 @@ class RC(Model):
     business = ForeignKey(Business, on_delete=SET_NULL, null=True, verbose_name="Бизнес")
     form_payment = ForeignKey(FormPayment, on_delete=SET_NULL, null=True, verbose_name="Форма оплаты")
     legal_entity = ForeignKey(LegalEntity, on_delete=SET_NULL, null=True, verbose_name="Юр. лицо")
-    rc: CharField = CharField(blank=False, verbose_name="Р/с")
+    name: CharField = CharField(blank=False, verbose_name="Р/с")
 
     def __str__(self):
-        return self.rc
+        return self.name
 
     class Meta:
         managed: bool = True

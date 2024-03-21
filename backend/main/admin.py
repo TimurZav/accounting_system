@@ -24,12 +24,12 @@ class BusinessForm(admin.ModelAdmin):
 class FormPaymentForm(admin.ModelAdmin):
     search_fields: list = [
         "business",
-        "form_payment"
+        "name"
     ]
     list_per_page: int = 250
     list_display: list = [
         "business",
-        "form_payment"
+        "name"
     ]
     formfield_overrides: dict = {
         models.CharField: {
@@ -43,13 +43,13 @@ class LegalEntityForm(admin.ModelAdmin):
     search_fields: list = [
         "business",
         "form_payment",
-        "legal_entity"
+        "name"
     ]
     list_per_page: int = 250
     list_display: list = [
         "business",
         "form_payment",
-        "legal_entity"
+        "name"
     ]
     formfield_overrides: dict = {
         models.CharField: {
@@ -64,14 +64,14 @@ class RCForm(admin.ModelAdmin):
         "business",
         "form_payment",
         "legal_entity",
-        "rc"
+        "name"
     ]
     list_per_page: int = 250
     list_display: list = [
         "business",
         "form_payment",
         "legal_entity",
-        "rc"
+        "name"
     ]
     formfield_overrides: dict = {
         models.CharField: {
