@@ -18,6 +18,12 @@
       Учёт ДС
     </button>
 
+<!--    <form method="post">-->
+<!--        {% csrf_token %}-->
+<!--        {{form.as_p}}-->
+<!--        <input type="submit" value="Create">-->
+<!--    </form>-->
+
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-xl">
@@ -29,7 +35,7 @@
           </div>
 
           <div class="modal-body container">
-            <form action="/action_page.php">
+            <form method="post">
 
 
                 <div class="row mb-4">
@@ -45,8 +51,11 @@
                     <h5>Направление бизнеса</h5>
                     <div class="col">
                         <label for="business">Выбери какой бизнес *</label>
-                        <select id="business" class="form-select" aria-label="Default select example">
+                        <select id="business" name="index" class="form-select" aria-label="Default select example">
                             <option selected>Выберите одно из меню</option>
+                            {% for business in businesses %}
+                                <option value="{{ business.pk }}">{{ business.name }}</option>
+                            {% endfor %}
                         </select>
                     </div>
 
@@ -61,8 +70,11 @@
                     <h5>Финансовые данные</h5>
                     <div class="col">
                         <label for="form_payment">Форма оплаты *</label>
-                        <select id="form_payment" class="form-select" aria-label="Default select example">
+                        <select id="form_payment" name="index" class="form-select" aria-label="Default select example">
                             <option selected>Выберите одно из меню</option>
+                            {% for form_payment in form_payments %}
+                                <option value="{{ form_payment.pk }}">{{ form_payment.name }}</option>
+                            {% endfor %}
                         </select>
                     </div>
 
@@ -73,8 +85,11 @@
 
                     <div class="col">
                         <label for="legal_entity">Юр. лицо *</label>
-                        <select id="legal_entity" class="form-select" aria-label="Default select example">
+                        <select id="legal_entity" name="index" class="form-select" aria-label="Default select example">
                             <option selected>Выберите одно из меню</option>
+                            {% for legal_entity in legal_entities %}
+                                <option value="{{ legal_entity.pk }}">{{ legal_entity.name }}</option>
+                            {% endfor %}
                         </select>
                     </div>
                 </div>
@@ -96,8 +111,11 @@
 
                     <div class="col">
                         <label for="rc">Р/с *</label>
-                        <select id="rc" class="form-select" aria-label="Default select example">
+                        <select id="rc" name="index" class="form-select" aria-label="Default select example">
                             <option selected>Выберите одно из меню</option>
+                            {% for rc in rcs %}
+                                <option value="{{ rc.pk }}">{{ rc.name }}</option>
+                            {% endfor %}
                         </select>
                     </div>
                 </div>
