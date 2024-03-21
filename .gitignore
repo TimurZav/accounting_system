@@ -1,0 +1,11 @@
+__pycache__
+venv
+.idea
+.vscode
+backend/venv
+backend/__pycache__
+backend/.vscode
+backend/.idea
+backend/backend/__pycache__
+backend/main/__pycache__
+backend/main/migrations/*.py

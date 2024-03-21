@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'main/css/index.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'main/css/bootstrap.css' %}" type="text/css">
+</head>
+
+<body>
+
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary m-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      Учёт ДС
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Финансовый учет компаний</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+          <div class="modal-body container">
+            <form action="/action_page.php">
+
+
+                <div class="row mb-4">
+                    <h5>Дата транзакции</h5>
+                    <div class="col">
+                        <label for="date_transaction">Выбери дату транзакции</label>
+                        <input class="form-control" type="date" id="date_transaction" name="trip-start"/>
+                    </div>
+                </div>
+
+
+                <div class="row mb-4">
+                    <h5>Направление бизнеса</h5>
+                    <div class="col">
+                        <label for="business">Выбери какой бизнес *</label>
+                        <select id="business" class="form-select" aria-label="Default select example">
+                            <option selected>Выберите одно из меню</option>
+                        </select>
+                    </div>
+
+                    <div class="col">
+                        <label for="accounting_date">Дата учета</label>
+                        <input class="form-control" type="date" id="accounting_date" name="trip-start"/>
+                    </div>
+                </div>
+
+
+                <div class="row mb-4">
+                    <h5>Финансовые данные</h5>
+                    <div class="col">
+                        <label for="form_payment">Форма оплаты *</label>
+                        <select id="form_payment" class="form-select" aria-label="Default select example">
+                            <option selected>Выберите одно из меню</option>
+                        </select>
+                    </div>
+
+                    <div class="col">
+                        <label for="amount">Сумма</label>
+                        <input class="form-control" placeholder="Введите сумму" type="number" id="amount" name="trip-start"/>
+                    </div>
+
+                    <div class="col">
+                        <label for="legal_entity">Юр. лицо *</label>
+                        <select id="legal_entity" class="form-select" aria-label="Default select example">
+                            <option selected>Выберите одно из меню</option>
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="row mb-4">
+                    <div class="col">
+                        <label for="incoming_outgoing">Приход / Расход *</label>
+                        <select id="incoming_outgoing" class="form-select" aria-label="Default select example">
+                            <option selected>Выберите одно из меню</option>
+                        </select>
+                    </div>
+
+                    <div class="col">
+                        <label for="base">Назначение платежа</label>
+                        <input class="form-control" placeholder="Введите назначение платежа"
+                               type="text" id="base" name="trip-start"/>
+                    </div>
+
+                    <div class="col">
+                        <label for="rc">Р/с *</label>
+                        <select id="rc" class="form-select" aria-label="Default select example">
+                            <option selected>Выберите одно из меню</option>
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="row mb-4">
+                    <h5>Учетные данные</h5>
+                    <div class="col">
+                        <label for="view">Вид *</label>
+                        <select id="view" class="form-select" aria-label="Default select example">
+                            <option selected>Выберите одно из меню</option>
+                        </select>
+                    </div>
+
+                    <div class="col">
+                        <label for="contractor">Контрагент *</label>
+                        <select id="contractor" class="form-select" aria-label="Default select example">
+                            <option selected>Выберите одно из меню</option>
+                        </select>
+                    </div>
+
+                    <div class="col">
+                        <label for="client">Клиент</label>
+                        <select id="client" class="form-select" aria-label="Default select example">
+                            <option selected>Выберите одно из меню</option>
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="row mb-4">
+                    <div class="col">
+                        <label for="source">Источник *</label>
+                        <select id="source" class="form-select" aria-label="Default select example">
+                            <option selected>Выберите одно из меню</option>
+                        </select>
+                    </div>
+
+                    <div class="col">
+                        <label for="article">Статья *</label>
+                        <select id="article" class="form-select" aria-label="Default select example">
+                            <option selected>Выберите одно из меню</option>
+                        </select>
+                    </div>
+
+                    <div class="col">
+                        <label for="contract_number">Номер договора</label>
+                        <select id="contract_number" class="form-select" aria-label="Default select example">
+                            <option selected>Выберите одно из меню</option>
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="row mb-4">
+                    <div class="col">
+                        <label for="group">Группа *</label>
+                        <select id="group" class="form-select" aria-label="Default select example">
+                            <option selected>Выберите одно из меню</option>
+                        </select>
+                    </div>
+
+                    <div class="col">
+                        <label for="additional_params">Доп параметры *</label>
+                        <select id="additional_params" class="form-select" aria-label="Default select example">
+                            <option selected>Выберите одно из меню</option>
+                        </select>
+                    </div>
+
+                    <div class="col">
+                        <label for="from_client">Откуда клиент</label>
+                        <select id="from_client" class="form-select" aria-label="Default select example">
+                            <option selected>Выберите одно из меню</option>
+                        </select>
+                    </div>
+                </div>
+
+
+            </form>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+            <button type="button" class="btn btn-primary">Записаться</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+    <script type="text/javascript" src="{% static 'main/js/bootstrap.js' %}"></script>
+    <script type="text/javascript" src="{% static 'main/js/index.js' %}"></script>
+</body>
+
+</html>
