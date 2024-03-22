@@ -46,7 +46,7 @@
                     <h5>Направление бизнеса</h5>
                     <div class="col">
                         <label for="business">Выбери какой бизнес *</label>
-                        <select id="business" name="index" class="form-select" aria-label="Default select example">
+                        <select id="business" name="index" data-type="formPayment" class="form-select select" aria-label="Default select example">
                             <option selected>Выберите одно из меню</option>
                             {% for business in businesses %}
                                 <option value="{{ business.pk }}">{{ business.name }}</option>
@@ -65,7 +65,7 @@
                     <h5>Финансовые данные</h5>
                     <div class="col">
                         <label for="formPayment">Форма оплаты *</label>
-                        <select id="formPayment" name="index" class="form-select" aria-label="Default select example">
+                        <select id="formPayment" name="index" data-type="legalEntity" class="form-select select" aria-label="Default select example">
                             <option selected>Выберите одно из меню</option>
                         </select>
                     </div>
@@ -77,7 +77,7 @@
 
                     <div class="col">
                         <label for="legalEntity">Юр. лицо *</label>
-                        <select id="legalEntity" name="index" class="form-select" aria-label="Default select example">
+                        <select id="legalEntity" name="index" data-type="rc" class="form-select select" aria-label="Default select example">
                             <option selected>Выберите одно из меню</option>
                         </select>
                     </div>
@@ -100,7 +100,7 @@
 
                     <div class="col">
                         <label for="rc">Р/с *</label>
-                        <select id="rc" name="index" class="form-select" aria-label="Default select example">
+                        <select id="rc" name="index" data-type="end" class="form-select select" aria-label="Default select example">
                             <option selected>Выберите одно из меню</option>
                         </select>
                     </div>
