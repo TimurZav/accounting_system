@@ -55,7 +55,6 @@ $(document).ready(function() {
       var returnArray = {};
       console.log(formArray);
       for (var i = 0; i < formArray.length; i++){
-        console.log(formArray[i]);
         returnArray[formArray[i]['name']] = formArray[i]['value'];
       }
       return returnArray;
