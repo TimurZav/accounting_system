@@ -22,22 +22,22 @@
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-xl">
-        <div class="modal-content">
+        <div class="modal-content" style="background-color: rgba(0, 0, 0, 0.3);">
 
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Финансовый учет компаний</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <h1 class="modal-title fs-3 text-center" style="margin: auto" id="exampleModalLabel">Финансовый учет компаний</h1>
+            <button type="button" style="margin: 0" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
 
           <div class="modal-body container">
-            <form method="post">
-
+            <form action="{% url 'feedback' %}" method="POST" data-popup="application">
+                {% csrf_token %}
 
                 <div class="row mb-4">
                     <h5 class="center">Дата транзакции</h5>
                     <div class="col">
                         <label for="date_transaction">Выбери дату транзакции</label>
-                        <input class="form-control" type="date" id="date_transaction" name="trip-start"/>
+                        <input class="form-control" type="date" id="date_transaction" name="date_transaction"/>
                     </div>
                 </div>
 
@@ -46,17 +46,17 @@
                     <h5 class="center">Направление бизнеса</h5>
                     <div class="col">
                         <label for="business">Выбери какой бизнес *</label>
-                        <select id="business" name="index" data-type="formPayment" class="form-select select" aria-label="Default select example">
+                        <select id="business" name="business" data-type="formPayment" class="form-select select" aria-label="Default select example">
                             <option selected>Выберите одно из меню</option>
                             {% for business in businesses %}
-                                <option value="{{ business.pk }}">{{ business.name }}</option>
+                                <option label="{{ business.name }}" value="{{ business.name }}">{{ business.pk }}</option>
                             {% endfor %}
                         </select>
                     </div>
 
                     <div class="col">
                         <label for="accounting_date">Дата учета</label>
-                        <input class="form-control" type="date" id="accounting_date" name="trip-start"/>
+                        <input class="form-control" type="date" id="accounting_date" name="accounting_date"/>
                     </div>
                 </div>
 
@@ -65,19 +65,19 @@
                     <h5 class="center">Финансовые данные</h5>
                     <div class="col">
                         <label for="formPayment">Форма оплаты *</label>
-                        <select id="formPayment" name="index" data-type="legalEntity" class="form-select select" aria-label="Default select example">
+                        <select id="formPayment" name="formPayment" data-type="legalEntity" class="form-select select" aria-label="Default select example">
                             <option selected>Выберите одно из меню</option>
                         </select>
                     </div>
 
                     <div class="col">
                         <label for="amount">Сумма</label>
-                        <input class="form-control" placeholder="Введите сумму" type="number" id="amount" name="trip-start"/>
+                        <input class="form-control" placeholder="Введите сумму" type="number" id="amount" name="amount"/>
                     </div>
 
                     <div class="col">
                         <label for="legalEntity">Юр. лицо *</label>
-                        <select id="legalEntity" name="index" data-type="rc" class="form-select select" aria-label="Default select example">
+                        <select id="legalEntity" name="legalEntity" data-type="rc" class="form-select select" aria-label="Default select example">
                             <option selected>Выберите одно из меню</option>
                         </select>
                     </div>
@@ -87,7 +87,7 @@
                 <div class="row mb-4">
                     <div class="col">
                         <label for="incomingOutgoing">Приход / Расход *</label>
-                        <select id="incomingOutgoing" class="form-select" aria-label="Default select example">
+                        <select id="incomingOutgoing" name="incomingOutgoing" class="form-select" aria-label="Default select example">
                             <option selected>Выберите одно из меню</option>
                         </select>
                     </div>
@@ -95,12 +95,12 @@
                     <div class="col">
                         <label for="base">Назначение платежа</label>
                         <input class="form-control" placeholder="Введите назначение платежа"
-                               type="text" id="base" name="trip-start"/>
+                               type="text" id="base" name="base"/>
                     </div>
 
                     <div class="col">
                         <label for="rc">Р/с *</label>
-                        <select id="rc" name="index" data-type="end" class="form-select select" aria-label="Default select example">
+                        <select id="rc" name="rc" data-type="end" class="form-select select" aria-label="Default select example">
                             <option selected>Выберите одно из меню</option>
                         </select>
                     </div>
@@ -111,21 +111,21 @@
                     <h5 class="center">Учетные данные</h5>
                     <div class="col">
                         <label for="view">Вид *</label>
-                        <select id="view" class="form-select" aria-label="Default select example">
+                        <select id="view" name="view" class="form-select" aria-label="Default select example">
                             <option selected>Выберите одно из меню</option>
                         </select>
                     </div>
 
                     <div class="col">
                         <label for="contractor">Контрагент *</label>
-                        <select id="contractor" class="form-select" aria-label="Default select example">
+                        <select id="contractor" name="contractor" class="form-select" aria-label="Default select example">
                             <option selected>Выберите одно из меню</option>
                         </select>
                     </div>
 
                     <div class="col">
                         <label for="client">Клиент</label>
-                        <select id="client" class="form-select" aria-label="Default select example">
+                        <select id="client" name="client" class="form-select" aria-label="Default select example">
                             <option selected>Выберите одно из меню</option>
                         </select>
                     </div>
@@ -135,21 +135,21 @@
                 <div class="row mb-4">
                     <div class="col">
                         <label for="source">Источник *</label>
-                        <select id="source" class="form-select" aria-label="Default select example">
+                        <select id="source" name="source" class="form-select" aria-label="Default select example">
                             <option selected>Выберите одно из меню</option>
                         </select>
                     </div>
 
                     <div class="col">
                         <label for="article">Статья *</label>
-                        <select id="article" class="form-select" aria-label="Default select example">
+                        <select id="article" name="article" class="form-select" aria-label="Default select example">
                             <option selected>Выберите одно из меню</option>
                         </select>
                     </div>
 
                     <div class="col">
                         <label for="contractNumber">Номер договора</label>
-                        <select id="contractNumber" class="form-select" aria-label="Default select example">
+                        <select id="contractNumber" name="contractNumber" class="form-select" aria-label="Default select example">
                             <option selected>Выберите одно из меню</option>
                         </select>
                     </div>
@@ -159,34 +159,42 @@
                 <div class="row mb-4">
                     <div class="col">
                         <label for="group">Группа *</label>
-                        <select id="group" class="form-select" aria-label="Default select example">
+                        <select id="group" name="group" class="form-select" aria-label="Default select example">
                             <option selected>Выберите одно из меню</option>
                         </select>
                     </div>
 
                     <div class="col">
                         <label for="additionalParams">Доп параметры *</label>
-                        <select id="additionalParams" class="form-select" aria-label="Default select example">
+                        <select id="additionalParams" name="additionalParams" class="form-select" aria-label="Default select example">
                             <option selected>Выберите одно из меню</option>
                         </select>
                     </div>
 
                     <div class="col">
                         <label for="fromClient">Откуда клиент</label>
-                        <select id="fromClient" class="form-select" aria-label="Default select example">
+                        <select id="fromClient" name="fromClient" class="form-select" aria-label="Default select example">
                             <option selected>Выберите одно из меню</option>
                         </select>
                     </div>
+                </div>
+
+                <div class="send modal-footer">
+                     <div class="d-grid gap-2 col-4 mx-auto">
+                        <a id="submitFormBtn" class="btn">
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          Записаться
+                        </a>
+                     </div>
                 </div>
 
 
             </form>
           </div>
 
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
-            <button type="button" class="btn btn-primary">Записаться</button>
-          </div>
 
         </div>
       </div>
