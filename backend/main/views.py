@@ -41,30 +41,30 @@ class AccountingDCCreateView(CreateView):
         if request.method != 'POST':
             return
 
+        date_transaction: str = request.POST.get('dateTransaction')
         business: str = request.POST.get('business')
         date_data_entry: datetime = datetime.datetime.now().date()
-        date_transaction: str = request.POST.get('date_transaction')
-        accounting_date: str = request.POST.get('accounting_date')
-        form_payment: str = request.POST.get('form_payment')
-        incoming_outgoing: str = request.POST.get('incoming_outgoing')
+        accounting_date: str = request.POST.get('accountingDate')
+        form_payment: str = request.POST.get('formPayment')
         amount: str = request.POST.get('amount')
-        legal_entity: str = request.POST.get('legal_entity')
-        rc: str = request.POST.get('rc')
+        legal_entity: str = request.POST.get('legalEntity')
+        incoming_outgoing: str = request.POST.get('incomingOutgoing')
         base: str = request.POST.get('base')
+        rc: str = request.POST.get('rc')
         view: str = request.POST.get('view')
-        source: str = request.POST.get('source')
-        group: str = request.POST.get('group')
-        article: str = request.POST.get('article')
-        additional_params: str = request.POST.get('additional_params')
         contractor: str = request.POST.get('contractor')
-        article_additional: str = request.POST.get('article_additional')
         client: str = request.POST.get('client')
-        contract_number: str = request.POST.get('contract_number')
-        from_client: str = request.POST.get('from_client')
-        date_number: str = request.POST.get('date_number')
-        date_month: str = request.POST.get('date_month')
-        date_year: str = request.POST.get('date_year')
-        amount_plan: str = request.POST.get('amount_plan')
+        source: str = request.POST.get('source')
+        article: str = request.POST.get('article')
+        contract_number: str = request.POST.get('contractNumber')
+        group: str = request.POST.get('group')
+        additional_params: str = request.POST.get('additionalParams')
+        from_client: str = request.POST.get('fromClient')
+        article_additional: str = request.POST.get('articleAdditional', '')
+        date_number: str = request.POST.get('dateNumber', datetime.datetime.now().day)
+        date_month: str = request.POST.get('dateMonth', datetime.datetime.now().month)
+        date_year: str = request.POST.get('dateYear', datetime.datetime.now().year)
+        amount_plan: str = request.POST.get('amountPlan', 2)
 
         response_data: dict = {
             'name': business,
@@ -93,15 +93,21 @@ class AccountingDCCreateView(CreateView):
             'amount_plan': amount_plan
         }
 
+        business_obj, _ = Business.objects.get_or_create(name=business)
+        form_payment_obj, _ = FormPayment.objects.get_or_create(name=form_payment)
+        legal_entity_obj, _ = LegalEntity.objects.get_or_create(name=legal_entity)
+        rc_obj, _ = RC.objects.get_or_create(name=rc)
+
         AccountingDC.objects.create(
+            business=business_obj,
             date_data_entry=date_data_entry,
             date_transaction=date_transaction,
             accounting_date=accounting_date,
-            form_payment=form_payment,
+            form_payment=form_payment_obj,
             incoming_outgoing=incoming_outgoing,
             amount=amount,
-            legal_entity=legal_entity,
-            rc=rc,
+            legal_entity=legal_entity_obj,
+            rc=rc_obj,
             base=base,
             view=view,
             source=source,
