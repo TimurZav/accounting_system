@@ -28,10 +28,48 @@ $(document).ready(function() {
 
     // Обработчик события для кнопки "Записаться"
     $('#submitFormBtn').click(function() {
+        event.preventDefault(); // Остановить стандартное действие кнопки
         // Находим форму, которую нужно отправить
         var form = $('form');
-        // Отправляем данные формы в Django
-        processForm(form);
+
+        // Проверяем, заполнены ли обязательные поля
+        var isValid = true;
+        form.find('input[required], select[required]').each(function() {
+            var input = $(this);
+            var errorMessage = 'Пожалуйста, заполните это поле.';
+
+            // Для input
+            if (input.is('input')) {
+                if (input.val() === '') {
+                    isValid = false;
+                    input.addClass('is-invalid'); // Добавляем класс для визуального указания на незаполненное поле
+                    if (!input.next().hasClass('invalid-feedback')) {
+                        input.after('<div class="invalid-feedback">' + errorMessage + '</div>'); // Добавляем сообщение об ошибке, если его еще нет
+                    }
+                } else {
+                    input.removeClass('is-invalid'); // Удаляем класс, если поле заполнено
+                    input.next('.invalid-feedback').remove(); // Удаляем сообщение об ошибке, если поле заполнено
+                }
+            }
+            // Для select
+            else if (input.is('select')) {
+                if (!input.val()) {
+                    isValid = false;
+                    input.addClass('is-invalid'); // Добавляем класс для визуального указания на незаполненное поле
+                    if (!input.next().hasClass('invalid-feedback')) {
+                        input.after('<div class="invalid-feedback">' + errorMessage + '</div>'); // Добавляем сообщение об ошибке, если его еще нет
+                    }
+                } else {
+                    input.removeClass('is-invalid'); // Удаляем класс, если поле заполнено
+                    input.next('.invalid-feedback').remove(); // Удаляем сообщение об ошибке, если поле заполнено
+                }
+            }
+        });
+
+        // Если все обязательные поля заполнены, отправляем данные формы
+        if (isValid) {
+            processForm(form);
+        }
     });
 
     // Функция для получения значения cookie по имени
@@ -63,6 +101,11 @@ $(document).ready(function() {
     // Функция для отправки данных формы в Django
     function processForm(self) {
         var form = $(self);
+        // Проверяем, заполнена ли форма
+        if (!form[0].checkValidity()) {
+            // Если форма не заполнена, ничего не делаем
+            return;
+        }
         var url = form.attr('action');
         var data = objectifyForm(form.serializeArray());
         data.csrfmiddlewaretoken = getCookie('csrftoken');

@@ -46,8 +46,8 @@
                     <h5 class="center">Направление бизнеса</h5>
                     <div class="col">
                         <label for="business">Выбери какой бизнес *</label>
-                        <select id="business" name="business" data-type="formPayment" class="form-select select" aria-label="Default select example">
-                            <option selected>Выберите одно из меню</option>
+                        <select required id="business" name="business" data-type="formPayment" class="form-select select" aria-label="Default select example">
+                            <option value="" selected>Выберите одно из меню</option>
                             {% for business in businesses %}
                                 <option label="{{ business.name }}" value="{{ business.name }}">{{ business.pk }}</option>
                             {% endfor %}
@@ -56,7 +56,7 @@
 
                     <div class="col">
                         <label for="accounting_date">Дата учета</label>
-                        <input class="form-control" type="date" id="accounting_date" name="accountingDate"/>
+                        <input required class="form-control" type="date" id="accounting_date" name="accountingDate"/>
                     </div>
                 </div>
 
@@ -65,8 +65,8 @@
                     <h5 class="center">Финансовые данные</h5>
                     <div class="col">
                         <label for="formPayment">Форма оплаты *</label>
-                        <select id="formPayment" name="formPayment" data-type="legalEntity" class="form-select select" aria-label="Default select example">
-                            <option selected>Выберите одно из меню</option>
+                        <select required id="formPayment" name="formPayment" data-type="legalEntity" class="form-select select" aria-label="Default select example">
+                            <option value="" selected>Выберите одно из меню</option>
                         </select>
                     </div>
 
@@ -77,8 +77,8 @@
 
                     <div class="col">
                         <label for="legalEntity">Юр. лицо *</label>
-                        <select id="legalEntity" name="legalEntity" data-type="rc" class="form-select select" aria-label="Default select example">
-                            <option selected>Выберите одно из меню</option>
+                        <select required id="legalEntity" name="legalEntity" data-type="rc" class="form-select select" aria-label="Default select example">
+                            <option value="" selected>Выберите одно из меню</option>
                         </select>
                     </div>
                 </div>
@@ -87,21 +87,21 @@
                 <div class="row mb-4">
                     <div class="col">
                         <label for="incomingOutgoing">Приход / Расход *</label>
-                        <select id="incomingOutgoing" name="incomingOutgoing" class="form-select" aria-label="Default select example">
-                            <option selected>Выберите одно из меню</option>
+                        <select required id="incomingOutgoing" name="incomingOutgoing" class="form-select" aria-label="Default select example">
+                            <option value="" selected>Выберите одно из меню</option>
                         </select>
                     </div>
 
                     <div class="col">
                         <label for="base">Назначение платежа</label>
-                        <input class="form-control" placeholder="Введите назначение платежа"
+                        <input required class="form-control" placeholder="Введите назначение платежа"
                                type="text" id="base" name="base"/>
                     </div>
 
                     <div class="col">
                         <label for="rc">Р/с *</label>
-                        <select id="rc" name="rc" data-type="end" class="form-select select" aria-label="Default select example">
-                            <option selected>Выберите одно из меню</option>
+                        <select required id="rc" name="rc" data-type="end" class="form-select select" aria-label="Default select example">
+                            <option value="" selected>Выберите одно из меню</option>
                         </select>
                     </div>
                 </div>
@@ -111,22 +111,22 @@
                     <h5 class="center">Учетные данные</h5>
                     <div class="col">
                         <label for="view">Вид *</label>
-                        <select id="view" name="view" class="form-select" aria-label="Default select example">
-                            <option selected>Выберите одно из меню</option>
+                        <select required id="view" name="view" class="form-select" aria-label="Default select example">
+                            <option value="" selected>Выберите одно из меню</option>
                         </select>
                     </div>
 
                     <div class="col">
                         <label for="contractor">Контрагент *</label>
-                        <select id="contractor" name="contractor" class="form-select" aria-label="Default select example">
-                            <option selected>Выберите одно из меню</option>
+                        <select required id="contractor" name="contractor" class="form-select" aria-label="Default select example">
+                            <option value="" selected>Выберите одно из меню</option>
                         </select>
                     </div>
 
                     <div class="col">
                         <label for="client">Клиент</label>
-                        <select id="client" name="client" class="form-select" aria-label="Default select example">
-                            <option selected>Выберите одно из меню</option>
+                        <select required id="client" name="client" class="form-select" aria-label="Default select example">
+                            <option value="" selected>Выберите одно из меню</option>
                         </select>
                     </div>
                 </div>
@@ -135,22 +135,22 @@
                 <div class="row mb-4">
                     <div class="col">
                         <label for="source">Источник *</label>
-                        <select id="source" name="source" class="form-select" aria-label="Default select example">
-                            <option selected>Выберите одно из меню</option>
+                        <select required id="source" name="source" class="form-select" aria-label="Default select example">
+                            <option value="" selected>Выберите одно из меню</option>
                         </select>
                     </div>
 
                     <div class="col">
                         <label for="article">Статья *</label>
-                        <select id="article" name="article" class="form-select" aria-label="Default select example">
-                            <option selected>Выберите одно из меню</option>
+                        <select required id="article" name="article" class="form-select" aria-label="Default select example">
+                            <option value="" selected>Выберите одно из меню</option>
                         </select>
                     </div>
 
                     <div class="col">
                         <label for="contractNumber">Номер договора</label>
-                        <select id="contractNumber" name="contractNumber" class="form-select" aria-label="Default select example">
-                            <option selected>Выберите одно из меню</option>
+                        <select required id="contractNumber" name="contractNumber" class="form-select" aria-label="Default select example">
+                            <option value="" selected>Выберите одно из меню</option>
                         </select>
                     </div>
                 </div>
@@ -159,22 +159,22 @@
                 <div class="row mb-4">
                     <div class="col">
                         <label for="group">Группа *</label>
-                        <select id="group" name="group" class="form-select" aria-label="Default select example">
-                            <option selected>Выберите одно из меню</option>
+                        <select required id="group" name="group" class="form-select" aria-label="Default select example">
+                            <option value="" selected>Выберите одно из меню</option>
                         </select>
                     </div>
 
                     <div class="col">
                         <label for="additionalParams">Доп параметры *</label>
-                        <select id="additionalParams" name="additionalParams" class="form-select" aria-label="Default select example">
-                            <option selected>Выберите одно из меню</option>
+                        <select required id="additionalParams" name="additionalParams" class="form-select" aria-label="Default select example">
+                            <option value="" selected>Выберите одно из меню</option>
                         </select>
                     </div>
 
                     <div class="col">
                         <label for="fromClient">Откуда клиент</label>
-                        <select id="fromClient" name="fromClient" class="form-select" aria-label="Default select example">
-                            <option selected>Выберите одно из меню</option>
+                        <select required id="fromClient" name="fromClient" class="form-select" aria-label="Default select example">
+                            <option value="" selected>Выберите одно из меню</option>
                         </select>
                     </div>
                 </div>
