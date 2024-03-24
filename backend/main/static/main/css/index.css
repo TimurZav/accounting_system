@@ -34,11 +34,11 @@ label {
 }
 
 h1 {
-  font-size: calc(20px + (32 - 20) * ((100vw - 500px) / (1600 - 300)));
+  font-size: calc(20px + (30 - 20) * ((100vw - 500px) / (1600 - 300)));
 }
 
 h5 {
-  font-size: calc(16px + (20 - 16) * ((100vw - 500px) / (1600 - 300)));
+  font-size: calc(16px + (21 - 16) * ((100vw - 500px) / (1600 - 300)));
 }
 
 .form-select, .form-control {
@@ -50,7 +50,7 @@ select {
     background-color: #e7e7e7 !important;
 }
 
-.send a {
+.send button {
   position: relative;
   display: inline-block;
   background-color: rgba(0, 0, 0, 0.3);
@@ -63,7 +63,7 @@ select {
   letter-spacing: 4px
 }
 
-.send a:hover {
+.send button:hover {
   background: #03e9f4;
   color: #fff;
   border-radius: 5px;
@@ -73,12 +73,12 @@ select {
               0 0 100px #03e9f4;
 }
 
-.send a span {
+.send button span {
   position: absolute;
   display: block;
 }
 
-.send a span:nth-child(1) {
+.send button span:nth-child(1) {
   top: 0;
   left: -100%;
   width: 100%;
@@ -96,7 +96,7 @@ select {
   }
 }
 
-.send a span:nth-child(2) {
+.send button span:nth-child(2) {
   top: -100%;
   right: 0;
   width: 2px;
@@ -115,7 +115,7 @@ select {
   }
 }
 
-.send a span:nth-child(3) {
+.send button span:nth-child(3) {
   bottom: 0;
   right: -100%;
   width: 100%;
@@ -134,7 +134,7 @@ select {
   }
 }
 
-.send a span:nth-child(4) {
+.send button span:nth-child(4) {
   bottom: -100%;
   left: 0;
   width: 2px;

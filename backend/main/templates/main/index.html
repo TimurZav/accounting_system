@@ -37,7 +37,7 @@
                     <h5 class="center">Дата транзакции</h5>
                     <div class="col">
                         <label for="date_transaction">Выбери дату транзакции</label>
-                        <input class="form-control" type="date" id="date_transaction" name="dateTransaction"/>
+                        <input required class="form-control" type="date" id="date_transaction" name="dateTransaction"/>
                     </div>
                 </div>
 
@@ -72,7 +72,7 @@
 
                     <div class="col">
                         <label for="amount">Сумма</label>
-                        <input class="form-control" placeholder="Введите сумму" type="number" id="amount" name="amount"/>
+                        <input required class="form-control" placeholder="Введите сумму" type="number" id="amount" name="amount"/>
                     </div>
 
                     <div class="col">
@@ -181,13 +181,13 @@
 
                 <div class="send modal-footer">
                      <div class="d-grid gap-2 col-4 mx-auto">
-                        <a id="submitFormBtn" class="btn">
+                        <button id="submitFormBtn" class="btn">
                           <span></span>
                           <span></span>
                           <span></span>
                           <span></span>
                           Записаться
-                        </a>
+                        </button>
                      </div>
                 </div>
 
