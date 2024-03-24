@@ -71,11 +71,33 @@ $(document).ready(function() {
             type: "POST",
             data: data,
             cache: false,
-            success: function(data) {
-                // Обработка успешного ответа
+            success: function(response) {
+                // Показываем успешное уведомление
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Данные успешно отправились в базу!",
+                    toast: true,
+                    showConfirmButton: false,
+                    timer: 1500,
+                    timerProgressBar: true
+                });
             },
-            error: function(jqXHR, exception) {
-                // Обработка ошибок
+            error: function(xhr, errmsg, err) {
+                // Показываем уведомление об ошибке
+                Swal.fire({
+                    position: "top-end",
+                    icon: "error",
+                    title: "Данные не попали в базу!",
+                    toast: true,
+                    showConfirmButton: false,
+                    timer: 1500,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.onmouseenter = Swal.stopTimer;
+                        toast.onmouseleave = Swal.resumeTimer;
+                    }
+                });
             }
         });
     }
