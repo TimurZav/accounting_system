@@ -29,6 +29,22 @@ h5, label, .modal-title {
   color: #e4e4e4;
 }
 
+label {
+  font-size: calc(10px + (17 - 10) * ((100vw - 500px) / (1600 - 300)));
+}
+
+h1 {
+  font-size: calc(20px + (32 - 20) * ((100vw - 500px) / (1600 - 300)));
+}
+
+h5 {
+  font-size: calc(16px + (20 - 16) * ((100vw - 500px) / (1600 - 300)));
+}
+
+.form-select, .form-control {
+  font-size: calc(8px + (16 - 8) * ((100vw - 500px) / (1600 - 300)));
+}
+
 input,
 select {
     background-color: #e7e7e7 !important;
@@ -39,7 +55,7 @@ select {
   display: inline-block;
   background-color: rgba(0, 0, 0, 0.3);
   color: #03e9f4;
-  font-size: 16px;
+  font-size: calc(7px + (16 - 7) * ((100vw - 500px) / (1600 - 300)));
   text-decoration: none;
   text-transform: uppercase;
   overflow: hidden;
