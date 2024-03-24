@@ -80,11 +80,16 @@ $(document).ready(function() {
                     toast: true,
                     showConfirmButton: false,
                     timer: 1500,
-                    timerProgressBar: true
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.onmouseenter = Swal.stopTimer;
+                        toast.onmouseleave = Swal.resumeTimer;
+                    }
                 });
             },
             error: function(xhr, errmsg, err) {
                 // Показываем уведомление об ошибке
+                console.log(xhr.status + ": " + xhr.responseText);
                 Swal.fire({
                     position: "top-end",
                     icon: "error",
