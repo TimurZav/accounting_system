@@ -87,8 +87,11 @@
                 <div class="row mb-4">
                     <div class="col">
                         <label for="incomingOutgoing">Приход / Расход *</label>
-                        <select required id="incomingOutgoing" name="incomingOutgoing" class="form-select" aria-label="Default select example">
+                        <select required id="incomingOutgoing" name="incomingOutgoing" data-type="view" class="form-select select" aria-label="Default select example">
                             <option value="" selected>Выберите одно из меню</option>
+                            {% for incoming_outgoing in incoming_outgoings %}
+                                <option label="{{ incoming_outgoing.name }}" value="{{ incoming_outgoing.name }}">{{ incoming_outgoing.pk }}</option>
+                            {% endfor %}
                         </select>
                     </div>
 
@@ -111,22 +114,28 @@
                     <h5 class="center">Учетные данные</h5>
                     <div class="col">
                         <label for="view">Вид *</label>
-                        <select required id="view" name="view" class="form-select" aria-label="Default select example">
+                        <select required id="view" name="view" data-type="source" class="form-select select" aria-label="Default select example">
                             <option value="" selected>Выберите одно из меню</option>
                         </select>
                     </div>
 
                     <div class="col">
                         <label for="contractor">Контрагент *</label>
-                        <select required id="contractor" name="contractor" class="form-select" aria-label="Default select example">
+                        <select required id="contractor" name="contractor" class="form-select select" aria-label="Default select example">
                             <option value="" selected>Выберите одно из меню</option>
+                            {% for contract in contracts %}
+                                <option label="{{ contract.name }}" value="{{ contract.name }}">{{ contract.pk }}</option>
+                            {% endfor %}
                         </select>
                     </div>
 
                     <div class="col">
                         <label for="client">Клиент</label>
-                        <select required id="client" name="client" class="form-select" aria-label="Default select example">
+                        <select required id="client" name="client" class="form-select select" aria-label="Default select example">
                             <option value="" selected>Выберите одно из меню</option>
+                            {% for client in clients %}
+                                <option label="{{ client.name }}" value="{{ client.name }}">{{ client.pk }}</option>
+                            {% endfor %}
                         </select>
                     </div>
                 </div>
@@ -135,22 +144,25 @@
                 <div class="row mb-4">
                     <div class="col">
                         <label for="source">Источник *</label>
-                        <select required id="source" name="source" class="form-select" aria-label="Default select example">
+                        <select required id="source" name="source" data-type="group" class="form-select select" aria-label="Default select example">
                             <option value="" selected>Выберите одно из меню</option>
                         </select>
                     </div>
 
                     <div class="col">
                         <label for="article">Статья *</label>
-                        <select required id="article" name="article" class="form-select" aria-label="Default select example">
+                        <select required id="article" name="article" data-type="additionalParams" class="form-select select" aria-label="Default select example">
                             <option value="" selected>Выберите одно из меню</option>
                         </select>
                     </div>
 
                     <div class="col">
                         <label for="contractNumber">Номер договора</label>
-                        <select required id="contractNumber" name="contractNumber" class="form-select" aria-label="Default select example">
+                        <select required id="contractNumber" name="contractNumber" class="form-select select" aria-label="Default select example">
                             <option value="" selected>Выберите одно из меню</option>
+                            {% for contract_number in contract_numbers %}
+                                <option label="{{ contract_number.name }}" value="{{ contract_number.name }}">{{ contract_number.pk }}</option>
+                            {% endfor %}
                         </select>
                     </div>
                 </div>
@@ -159,22 +171,25 @@
                 <div class="row mb-4">
                     <div class="col">
                         <label for="group">Группа *</label>
-                        <select required id="group" name="group" class="form-select" aria-label="Default select example">
+                        <select required id="group" name="group" data-type="article" class="form-select select" aria-label="Default select example">
                             <option value="" selected>Выберите одно из меню</option>
                         </select>
                     </div>
 
                     <div class="col">
                         <label for="additionalParams">Доп параметры *</label>
-                        <select required id="additionalParams" name="additionalParams" class="form-select" aria-label="Default select example">
+                        <select required id="additionalParams" name="additionalParams" data-type="end" class="form-select select" aria-label="Default select example">
                             <option value="" selected>Выберите одно из меню</option>
                         </select>
                     </div>
 
                     <div class="col">
                         <label for="fromClient">Откуда клиент</label>
-                        <select required id="fromClient" name="fromClient" class="form-select" aria-label="Default select example">
+                        <select required id="fromClient" name="fromClient" class="form-select select" aria-label="Default select example">
                             <option value="" selected>Выберите одно из меню</option>
+                            {% for from_client in from_clients %}
+                                <option label="{{ from_client.name }}" value="{{ from_client.name }}">{{ from_client.pk }}</option>
+                            {% endfor %}
                         </select>
                     </div>
                 </div>
