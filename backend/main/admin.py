@@ -6,13 +6,13 @@ from django.contrib import admin
 
 @admin.register(Business)
 class BusinessForm(admin.ModelAdmin):
-    search_fields: list = [
-        "name"
-    ]
+    search_fields: tuple = (
+        "name",
+    )
     list_per_page: int = 250
-    list_display: list = [
-        "name"
-    ]
+    list_display: tuple = (
+        "name",
+    )
     formfield_overrides: dict = {
         models.CharField: {
           'widget': forms.Textarea(attrs={'rows': '4', 'cols': '50'})
@@ -22,15 +22,15 @@ class BusinessForm(admin.ModelAdmin):
 
 @admin.register(FormPayment)
 class FormPaymentForm(admin.ModelAdmin):
-    search_fields: list = [
+    search_fields: tuple = (
         "business",
         "name"
-    ]
+    )
     list_per_page: int = 250
-    list_display: list = [
+    list_display: tuple = (
         "business",
         "name"
-    ]
+    )
     formfield_overrides: dict = {
         models.CharField: {
             'widget': forms.Textarea(attrs={'rows': '4', 'cols': '50'})
@@ -40,17 +40,17 @@ class FormPaymentForm(admin.ModelAdmin):
 
 @admin.register(LegalEntity)
 class LegalEntityForm(admin.ModelAdmin):
-    search_fields: list = [
+    search_fields: tuple = (
         "business",
         "form_payment",
         "name"
-    ]
+    )
     list_per_page: int = 250
-    list_display: list = [
+    list_display: tuple = (
         "business",
         "form_payment",
         "name"
-    ]
+    )
     formfield_overrides: dict = {
         models.CharField: {
             'widget': forms.Textarea(attrs={'rows': '4', 'cols': '50'})
@@ -60,19 +60,19 @@ class LegalEntityForm(admin.ModelAdmin):
 
 @admin.register(RC)
 class RCForm(admin.ModelAdmin):
-    search_fields: list = [
+    search_fields: tuple = (
         "business",
         "form_payment",
         "legal_entity",
         "name"
-    ]
+    )
     list_per_page: int = 250
-    list_display: list = [
+    list_display: tuple = (
         "business",
         "form_payment",
         "legal_entity",
         "name"
-    ]
+    )
     formfield_overrides: dict = {
         models.CharField: {
             'widget': forms.Textarea(attrs={'rows': '4', 'cols': '50'})
@@ -82,16 +82,16 @@ class RCForm(admin.ModelAdmin):
 
 @admin.register(AccountingDC)
 class AccountingDCForm(admin.ModelAdmin):
-    search_fields: list = [
+    search_fields: tuple = (
         "date_data_entry",
         "date_transaction",
-        "business",
+        "business__name",
         "accounting_date",
-        "form_payment",
+        "form_payment__name",
         "incoming_outgoing",
         "amount",
-        "legal_entity",
-        "rc",
+        "legal_entity__name",
+        "rc__name",
         "base",
         "view",
         "source",
@@ -107,9 +107,9 @@ class AccountingDCForm(admin.ModelAdmin):
         "date_month",
         "date_year",
         "amount_plan"
-    ]
+    )
     list_per_page: int = 250
-    list_display: list = [
+    list_display: tuple = (
         "date_data_entry",
         "date_transaction",
         "business",
@@ -134,7 +134,7 @@ class AccountingDCForm(admin.ModelAdmin):
         "date_month",
         "date_year",
         "amount_plan"
-    ]
+    )
     formfield_overrides: dict = {
         models.CharField: {
           'widget': forms.Textarea(attrs={'rows': '4', 'cols': '50'})
