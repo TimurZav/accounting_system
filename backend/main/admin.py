@@ -109,6 +109,7 @@ class AccountingDCForm(admin.ModelAdmin):
         "amount_plan"
     )
     list_per_page: int = 250
+    list_filter: tuple = ('date_data_entry', 'date_transaction', 'business__name')
     list_display: tuple = (
         "date_data_entry",
         "date_transaction",
