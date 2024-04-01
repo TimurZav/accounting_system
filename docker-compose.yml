@@ -9,7 +9,7 @@ services:
       - "-c"
       - "max_connections=5"
       - "-c"
-      - "shared_buffers=2GB"
+      - "shared_buffers=0.3GB"
       - "-c"
       - "effective_cache_size=1GB"
       - "-c"
