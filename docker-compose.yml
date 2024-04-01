@@ -74,7 +74,7 @@ services:
       python3 manage.py runserver
       "
     volumes:
-      - ./website_netherlands:/website_netherlands
+      - ./backend:/backend
     ports:
       - "8000:8000"
     environment:
