@@ -63,6 +63,31 @@ services:
     networks:
       - postgres
 
+  accounting_system:
+    container_name: accounting_system
+    restart: always
+    build: ./website_netherlands
+    command:
+      bash -c "
+      python3 manage.py makemigrations --noinput &&
+      python3 manage.py migrate --noinput &&
+      python3 manage.py runserver
+      "
+    volumes:
+      - ./website_netherlands:/website_netherlands
+    ports:
+      - "8000:8000"
+    environment:
+      - POSTGRES_HOST=${POSTGRES_HOST}
+      - POSTGRES_PORT=${POSTGRES_PORT}
+      - POSTGRES_NAME=${POSTGRES_NAME}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    depends_on:
+      - postgres
+    networks:
+      - postgres
+
 
 networks:
   postgres:
