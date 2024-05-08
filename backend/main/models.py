@@ -210,7 +210,7 @@ class FromClient(Model):
 
 class AccountingDC(Model):
     business: ForeignKey = ForeignKey(Business, on_delete=SET_NULL, null=True, verbose_name='Бизнес')
-    date_data_entry: DateField = DateField(blank=False, verbose_name='Дата ввода данных')
+    date_data_entry: DateField = DateField(blank=False, verbose_name='Дата ввода данных', null=True)
     date_transaction: DateField = DateField(blank=True, verbose_name='Дата транзакции')
     accounting_date: DateField = DateField(blank=False, verbose_name='Дата учета')
     form_payment: ChainedForeignKey = ChainedForeignKey(
@@ -220,7 +220,8 @@ class AccountingDC(Model):
         verbose_name="Форма платежа",
         show_all=False,
         auto_choose=True,
-        sort=True
+        sort=True,
+        null=True
     )
     incoming_outgoing: ForeignKey = ForeignKey(IncomingOutgoing, on_delete=SET_NULL, null=True,
                                                verbose_name='Приход/Расход')
@@ -232,7 +233,8 @@ class AccountingDC(Model):
         verbose_name="Юр. лицо",
         show_all=False,
         auto_choose=True,
-        sort=True
+        sort=True,
+        null=True
     )
     rc: ChainedForeignKey = ChainedForeignKey(
         RC,
@@ -241,7 +243,8 @@ class AccountingDC(Model):
         verbose_name="Р/с",
         show_all=False,
         auto_choose=True,
-        sort=True
+        sort=True,
+        null=True
     )
     base: CharField = CharField(blank=True, verbose_name='Основание')
     view: ChainedForeignKey = ChainedForeignKey(
@@ -251,7 +254,8 @@ class AccountingDC(Model):
         verbose_name="Вид",
         show_all=False,
         auto_choose=True,
-        sort=True
+        sort=True,
+        null=True
     )
     source: ChainedForeignKey = ChainedForeignKey(
         Source,
@@ -260,7 +264,8 @@ class AccountingDC(Model):
         verbose_name="Источник",
         show_all=False,
         auto_choose=True,
-        sort=True
+        sort=True,
+        null=True
     )
     group: ChainedForeignKey = ChainedForeignKey(
         Group,
@@ -269,7 +274,8 @@ class AccountingDC(Model):
         verbose_name="Группа",
         show_all=False,
         auto_choose=True,
-        sort=True
+        sort=True,
+        null=True
     )
     article: ChainedForeignKey = ChainedForeignKey(
         Article,
@@ -278,7 +284,8 @@ class AccountingDC(Model):
         verbose_name="Статья",
         show_all=False,
         auto_choose=True,
-        sort=True
+        sort=True,
+        null=True
     )
     additional_params: ChainedForeignKey = ChainedForeignKey(
         AdditionalParams,
@@ -287,10 +294,11 @@ class AccountingDC(Model):
         verbose_name="Доп параметры",
         show_all=False,
         auto_choose=True,
-        sort=True
+        sort=True,
+        null=True
     )
     contractor: ForeignKey = ForeignKey(Contract, on_delete=SET_NULL, null=True, verbose_name='Контрагент')
-    article_additional: CharField = CharField(blank=True, verbose_name='Статья+Доп')
+    article_additional: CharField = CharField(blank=True, verbose_name='Статья+Доп', null=True)
     client: ForeignKey = ForeignKey(Client, on_delete=SET_NULL, null=True, verbose_name='Клиент')
     contract_number: ForeignKey = ForeignKey(ContractNumber, on_delete=SET_NULL, null=True,
                                              verbose_name='Номер договора')
@@ -298,7 +306,7 @@ class AccountingDC(Model):
     date_number: IntegerField = IntegerField(blank=True, verbose_name='Число')
     date_month: IntegerField = IntegerField(blank=True, verbose_name='Месяц')
     date_year: IntegerField = IntegerField(blank=True, verbose_name='Год')
-    amount_plan: FloatField = FloatField(blank=True, verbose_name='Сумма план')
+    amount_plan: FloatField = FloatField(blank=True, verbose_name='Сумма план', null=True)
 
     def __str__(self):
         return self.contract_number

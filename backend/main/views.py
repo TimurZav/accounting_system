@@ -71,9 +71,9 @@ class AccountingDCCreateView(CreateView):
         additional_params: str = request.POST.get('additionalParams')
         from_client: str = request.POST.get('fromClient')
         article_additional: str = request.POST.get('articleAdditional', '')
-        date_number: str = request.POST.get('dateNumber', datetime.datetime.now().day)
-        date_month: str = request.POST.get('dateMonth', datetime.datetime.now().month)
-        date_year: str = request.POST.get('dateYear', datetime.datetime.now().year)
+        date_number: int = datetime.datetime.strptime(accounting_date, "%Y-%m-%d").day
+        date_month: int = datetime.datetime.strptime(accounting_date, "%Y-%m-%d").month
+        date_year: int = datetime.datetime.strptime(accounting_date, "%Y-%m-%d").year
         amount_plan: str = request.POST.get('amountPlan', 2)
 
         response_data: dict = {
